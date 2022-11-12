@@ -17,6 +17,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import $api from "@/api/index.js";
 //引入集成表格
 import objTablePlus from 'obj-table-plus'
+import objModal from 'obj-modal'
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
@@ -36,6 +37,7 @@ Vue.use(renSelect)
 Vue.use(renDeptTree)
 Vue.use(renRegionTree)
 Vue.use(objTablePlus)
+Vue.use(objModal)
 Vue.use(VXETable)
 Vue.use(VueCookie)
 

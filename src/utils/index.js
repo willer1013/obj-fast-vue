@@ -2,6 +2,17 @@ import Vue from 'vue'
 import router from '@/router'
 import store from '@/store'
 
+
+export function getDictDataList (dictType) {
+  const type = window.SITE_CONFIG['dictList'].find((element) => (element.dictType === dictType))
+  if (type) {
+    return type.dataList
+  } else {
+    return []
+  }
+}
+
+
 /**
  * 获取uuid
  */

@@ -48,7 +48,7 @@
   <!-- 生产环境 -->
   <% if (process.env.VUE_APP_NODE_ENV === 'prod') { %>
     <script>
-      window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
     </script>
   <% } %>
   <script src="./plugins/tinymce/tinymce.min.js"></script>
