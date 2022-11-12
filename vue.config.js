@@ -14,10 +14,10 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     open: true,
-    port: 8001,
+    port: 8080,
     overlay: {
       errors: true,
-      warnings: true
+      // warnings: true
     }
   }
 }

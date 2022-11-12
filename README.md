@@ -102,3 +102,16 @@ window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
 
 <br>
 <br>
+
+## 开发模式下  Can't resolve '/src/config' 警告可以忽略
+
+
+## 相关框架文档
+
+- tailwindcss[全局生效] 快速构建样式库 https://www.tailwindcss.cn/docs/installation
+- vue-async-computed[全局生效] 可以异步请求的computed属性 https://github.com/foxbenjaminfox/vue-async-computed
+- lodash[根据需求在组件内按需引用] 常用函数库 https://www.lodashjs.com/
+- dayjs[全局挂载于$day] 常用日期的函数库 https://day.js.org/ 或者 https://dayjs.fenxianglu.cn/
+- obj-table-plus[全局生效] 团队封装的工具组件 参考：https://objstudio.github.io/docs/
+- obj-modal[全局生效]
+- tinymce 富文本插件 文档 https://www.tiny.cloud/

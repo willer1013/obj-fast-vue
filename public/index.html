@@ -30,7 +30,7 @@
   <!-- 开发环境 -->
   <% if (process.env.VUE_APP_NODE_ENV === 'dev') { %>
     <script>
-    window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
     </script>
   <% } %>
   <!-- 集成测试环境 -->
@@ -51,6 +51,7 @@
       window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
     </script>
   <% } %>
+  <script src="./plugins/tinymce/tinymce.min.js"></script>
 </head>
 <body>
   <div id="app"></div>
