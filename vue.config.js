@@ -15,9 +15,9 @@ module.exports = {
   devServer: {
     open: true,
     port: 8080,
-    overlay: {
-      errors: true,
-      // warnings: true
-    }
+    // overlay: {
+    //   errors: true,
+    //   warnings: true
+    // }
   }
 }
