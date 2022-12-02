@@ -1,13 +1,17 @@
 {
-  "name": "renren-ui",
-  "version": "5.2.0",
+  "name": "obj-fast-vue_power-by-renrenui",
+  "version": "6.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "serve:sit": "vue-cli-service serve --mode development.sit",
+    "serve:uat": "vue-cli-service serve --mode development.uat",
     "build:prod": "vue-cli-service build --mode production",
     "build:sit": "vue-cli-service build --mode production.sit",
-    "build:uat": "vue-cli-service build --mode production.uat"
+    "build:uat": "vue-cli-service build --mode production.uat",
+    "upload": "node deploy.js",
+    "deploy": "npm run build:prod && npm run upload"
   },
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",
@@ -49,7 +53,12 @@
     "@vue/cli-service": "^4.4.6",
     "element-theme-chalk": "^2.15.7",
     "natives": "^1.1.6",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "scp2": "^0.5.0",
+    "ssh2": "^1.11.0",
+    "chalk": "^5.1.2",
+    "compressing": "^1.6.2",
+    "cross-env": "^7.0.3"
   },
   "browserslist": [
     "> 1%",

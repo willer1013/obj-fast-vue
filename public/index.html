@@ -33,16 +33,28 @@
       window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
     </script>
   <% } %>
+  <!-- 开发集成测试环境 -->
+  <% if (process.env.VUE_APP_NODE_ENV === 'dev:sit') { %>
+    <script>
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
+    </script>
+  <% } %>
+  <!-- 开发验收测试环境 -->
+  <% if (process.env.VUE_APP_NODE_ENV === 'dev:uat') { %>
+    <script>
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
+    </script>
+  <% } %>
   <!-- 集成测试环境 -->
   <% if (process.env.VUE_APP_NODE_ENV === 'prod:sit') { %>
     <script>
-      window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
     </script>
   <% } %>
   <!-- 验收测试环境 -->
   <% if (process.env.VUE_APP_NODE_ENV === 'prod:uat') { %>
     <script>
-      window.SITE_CONFIG['apiURL'] = 'http://localhost:8080/renren-admin';
+      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
     </script>
   <% } %>
   <!-- 生产环境 -->
