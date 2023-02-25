@@ -23,6 +23,10 @@
             <icon-svg name="editor" class="site-sidebar__menu-icon"></icon-svg>
             <span slot="title">tinymce</span>
           </el-menu-item>
+          <el-menu-item index="demo-aliyun-upload" @click="$router.push({ name: 'demo-aliyun-upload' })">
+            <icon-svg name="editor" class="site-sidebar__menu-icon"></icon-svg>
+            <span slot="title">aliyun-upload</span>
+          </el-menu-item>
         </el-submenu>
         <sub-menu
           v-for="menu in menuList"

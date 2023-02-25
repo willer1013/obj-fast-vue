@@ -36,7 +36,8 @@ const mainRoutes = {
     { path: '/home', component: _import('common/home'), name: 'home', meta: { title: '首页' } },
     { path: '/theme', component: _import('common/theme'), name: 'theme', meta: { title: '主题' } },
     { path: '/demo-echarts', component: _import('demo/echarts'), name: 'demo-echarts', meta: { title: 'demo-echarts', isTab: true } },
-    { path: '/demo-tinymce', component: _import('demo/tinymce'), name: 'demo-tinymce', meta: { title: 'demo-tinymce', isTab: true } }
+    { path: '/demo-tinymce', component: _import('demo/tinymce'), name: 'demo-tinymce', meta: { title: 'demo-tinymce', isTab: true } },
+    { path: '/demo-aliyun-upload', component: _import('demo/aliyun-upload'), name: 'demo-aliyun-upload', meta: { title: 'demo-aliyun-upload', isTab: true } }
   ],
   beforeEnter (to, from, next) {
     let token = Vue.cookie.get('token')

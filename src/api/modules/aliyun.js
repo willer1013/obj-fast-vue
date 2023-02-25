@@ -5,10 +5,9 @@ export const aliyun = {
 	upLoadImage(filePath/*文件路径*/,progressc/*上传进度回调函数，返回进度*/){
 		return new Promise((resolve,reject)=>{
 			uploadFileToOss(filePath,'',url => {
-				//JSON.stringify({url})
-				resolve(JSON.stringify({url}))
+				resolve(url)
 			 },err=>{
-				 reject(err)
+				reject(err)
 			 },progress=>{
 				 progressc&&progressc(progress)
 			 })

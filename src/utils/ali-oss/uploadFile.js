@@ -1,5 +1,5 @@
+import axios from 'axios';
 const env = require('./config.js'); //配置文件，在这文件里配置你的OSS keyId和KeySecret,timeout:87600;
-
 const base64 = require('./base64.js');//Base64,hmac,sha1,crypto相关算法
 require('./hmac.js');
 require('./sha1.js');
@@ -13,53 +13,52 @@ const Crypto = require('./crypto.js');
  *@param - failc:失败回调
  */ 
 const uploadFile = function (filePath, dir, successc, failc,progressc) {
-  if (!filePath || filePath.length < 9) {
-    uni.showModal({
-      title: '文件错误',
-      content: '请重试',
-      showCancel: false,
-    })
+  if (!filePath) {
+    console.log("文件错误,请重试",filePath);
     return;
   }
   //文件名字 可以自行定义，     这里是采用当前的时间戳 + 150内的随机数来给文件命名的
-  const aliyunFileKey = dir + new Date().getTime() + Math.floor(Math.random() * 150) + filePath.slice(filePath.length-10<0?0:filePath.length-10,filePath.length);
+  const aliyunFileKey = dir + new Date().getTime() + Math.floor(Math.random() * 150);
   
   const aliyunServerURL = env.uploadImageUrl;//OSS地址，需要https
   const accessid = env.OSSAccessKeyId;
   const policyBase64 = getPolicyBase64();
   const signature = getSignature(policyBase64);//获取签名
  
-  let task=uni.uploadFile({
-    url: aliyunServerURL,//开发者服务器 url
-    filePath: filePath,//要上传文件资源的路径
-    name: 'file',//必须填file
-    formData: {
-      'key': aliyunFileKey,
-      'policy': policyBase64,
-      'OSSAccessKeyId': accessid,
-      'signature': signature,
-      'success_action_status': '200',
+  const formData=new FormData();
+  formData.append("key",aliyunFileKey);
+  formData.append("policy",policyBase64);
+  formData.append("OSSAccessKeyId",accessid);
+  formData.append("signature",signature);
+  formData.append("success_action_status",200);
+  formData.append("file",filePath);
+  axios({
+    method:"post",
+    url:aliyunServerURL,
+    data:formData,
+    headers:{
+      'Content-type' : 'multipart/form-data'
     },
-    success: function (res) {
-			console.log(res);
-			console.log(aliyunServerURL+aliyunFileKey);
-      if (res.statusCode != 200) {
-        failc(new Error('上传错误:' + JSON.stringify(res)))
-        return;
-      }
-			console.log(res);
-      successc(aliyunServerURL+aliyunFileKey);
-    },
-    fail: function (err) {
-			console.log(err);
-      err.wxaddinfo = aliyunServerURL;
-      failc(err);
-    },
+    onUploadProgress: (progressEvent) => {
+      let progress = (progressEvent.loaded / progressEvent.total * 100 | 0);
+      progressc&&progressc(progress);
+    }
   })
-	task.onProgressUpdate((progress)=>{
-		progressc&&progressc(progress);
-	})
-	
+  .then((res)=>{
+    console.log(res);
+    console.log(aliyunServerURL+aliyunFileKey);
+    if (res.status != 200) {
+      failc(new Error('上传错误:' + res))
+      return;
+    }
+    console.log(res);
+    successc(aliyunServerURL+aliyunFileKey);
+  })
+  .catch((err)=>{
+    console.log(err);
+    err.wxaddinfo = aliyunServerURL;
+    failc(err);
+  })
 }
 
 const getPolicyBase64 = function () {
