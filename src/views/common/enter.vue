@@ -36,6 +36,7 @@ export default {
                 } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
+                
             } else {
                 if (element.requestFullscreen) {
                     element.requestFullscreen();
