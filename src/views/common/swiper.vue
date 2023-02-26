@@ -50,15 +50,15 @@
       </div>
       <div class="rb">
         <!-- swiper-button-prev -->
-        <div class="b1">
-          <img src="~@/assets/img/上一页.png" alt="" onclick="prephoto" />
+        <div class="b1" onclick="prephoto">
+          <img src="~@/assets/img/上一页.png" alt=""  />
         </div>
-        <div class="b2">
-          <img src="~@/assets/img/暂停.png" alt="" onclick="stop" />
+        <div class="b2" @click="stopbutton">
+          <img src="~@/assets/img/暂停.png" alt=""  />
         </div>
         <!-- swiper-button-next -->
-        <div class="b3">
-          <img src="~@/assets/img/下一页.png" alt="" onclick="nextphoto" />
+        <div class="b3" onclick="nextphoto">
+          <img src="~@/assets/img/下一页.png" alt=""  />
         </div>
       </div>
     </div>
@@ -80,6 +80,7 @@ export default {
       speed: "",
       pictureAttr: [],
       swiperAutoPlay: true,
+      stopbutton: true,
       // 默认设置为 1000
       swiperDelay: 500,
     };
@@ -135,7 +136,15 @@ export default {
       console.log(`hello index: ${$event}`);
     },
     stop() {
+      if(this.stopbutton == true)
       this.swiperAutoPlay = !this.swiperAutoPlay;
+      // this.swiperAutoPlay = false;
+
+    },
+    stopbutton() {
+
+      this.stopbutton = !this.stopbutton;
+      console.log('stop')
     },
     async getBannerList() {
       let {
