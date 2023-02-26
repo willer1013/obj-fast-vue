@@ -24,6 +24,8 @@ import 'vxe-table/lib/style.css'
 import "tailwindcss/tailwind.css"
 import * as dayjs from 'dayjs'
 import VueCookie from 'vue-cookie'    
+// import "swiper/css/swiper.css";
+import EasySlider from 'vue-easy-slider'
 
 Vue.config.productionTip = false
 
@@ -40,6 +42,7 @@ Vue.use(objTablePlus)
 Vue.use(objModal)
 Vue.use(VXETable)
 Vue.use(VueCookie)
+Vue.use(EasySlider)
 
 // 挂载全局
 Vue.prototype.$http = http

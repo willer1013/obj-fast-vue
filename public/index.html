@@ -26,11 +26,13 @@
     window.SITE_CONFIG['dynamicMenuRoutes'] = [];            // 动态(菜单)路由列表
     window.SITE_CONFIG['dynamicMenuRoutesHasAdded'] = false; // 动态(菜单)路由是否已经添加的状态标示（用于判断是否需要重新拉取数据并进行动态添加操作）
   </script>
-
+ 
   <!-- 开发环境 -->
   <% if (process.env.VUE_APP_NODE_ENV === 'dev') { %>
     <script>
-      window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
+      // window.SITE_CONFIG['apiURL'] = 'http://192.168.2.16:8080/renren-fast';
+      // window.SITE_CONFIG['apiURL'] = 'http://119.29.103.250:8080/renren-fast/';
+      window.SITE_CONFIG['apiURL'] = 'http://localhost:8999/rotation-chart/';
     </script>
   <% } %>
   <!-- 开发集成测试环境 -->
