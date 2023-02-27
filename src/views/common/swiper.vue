@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img id="hx" src="~@/assets/img/海星.png" alt="" /> -->
     <!-- logo -->
-    <div id="logo">
+    <div id="logo" @click="stop">
       <!-- 文字触发 -->
       <!-- <a-button type="primary" @click="screen" size="large"></a-button> -->
     </div>
@@ -34,14 +34,15 @@
             :stopOnHover="true"
             :speed="swiperDelay"
             :autoplay="swiperAutoPlay"
+            ref="sider"
           >
             <slider-item
               v-for="(i, index) in banner"
               :key="index"
               @click="hello"
             >
-              <div>
-                <img :src="i.picUrl" class="swiperImg" />
+              <div class="w-full h-full ">
+                <img :src="i.picUrl" class="object-cover swiperImg"/>
                 <p class="swiperName">{{ i.picName }}</p>
               </div>
             </slider-item>
@@ -50,14 +51,14 @@
       </div>
       <div class="rb">
         <!-- swiper-button-prev -->
-        <div class="b1" onclick="prephoto">
+        <div class="b1" @click="previous">
           <img src="~@/assets/img/上一页.png" alt=""  />
         </div>
-        <div class="b2" @click="stopbutton">
+        <div class="b2" @click="stop">
           <img src="~@/assets/img/暂停.png" alt=""  />
         </div>
         <!-- swiper-button-next -->
-        <div class="b3" onclick="nextphoto">
+        <div class="b3" @click="next">
           <img src="~@/assets/img/下一页.png" alt=""  />
         </div>
       </div>
@@ -66,7 +67,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+
 import { Slider, SliderItem } from "vue-easy-slider";
 import screenfull from "screenfull";
 import axios from "axios";
@@ -76,7 +77,9 @@ export default {
   props: {},
   data() {
     return {
-      banner: [],
+      banner: [
+      
+      ],
       speed: "",
       pictureAttr: [],
       swiperAutoPlay: true,
@@ -135,11 +138,19 @@ export default {
     hello($event) {
       console.log(`hello index: ${$event}`);
     },
+    previous() {
+      let sliderLeft=document.getElementsByClassName('slider-btn-left')[0]
+       sliderLeft.click()
+      console.log('pre')
+    },
+    next() {
+       let sliderRight=document.getElementsByClassName('slider-btn-right')[0]
+       sliderRight.click()
+      console.log('next')
+    },
     stop() {
-      if(this.stopbutton == true)
-      this.swiperAutoPlay = !this.swiperAutoPlay;
-      // this.swiperAutoPlay = false;
-
+     this.$refs.sider.handleMouseenter()
+     
     },
     stopbutton() {
 
@@ -375,5 +386,10 @@ p {
   justify-content: center;
   align-items: center;
   font-size: 24px;
+}
+</style>
+<style>
+.slider-btn{
+  opacity: 0;
 }
 </style>

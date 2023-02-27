@@ -22,7 +22,7 @@ const globalRoutes = [
   { path: '/login', component: _import('common/login'), name: 'login', meta: { title: '登录' } },
   { path: '/swiper', component: _import('common/swiper'), name: 'swiper', meta: { title: '轮播图展示' } },
   { path: '/home', component: _import('common/home'), name: 'home', meta: { title: 'home首页' } },
-  // { path: '/home', component: _import('common/home'), name: 'home', meta: { title: 'home首页' } },
+  //{ path: '/home', component: _import('common/home'), name: 'home', meta: { title: 'home首页' } },
   { path: '/test', component: _import('common/test'), name: 'test', meta: { title: 'test' } },
   { path: '/enter', component: _import('common/enter'), name: 'enter', meta: { title: 'enter' } },
 ]
@@ -39,7 +39,7 @@ const mainRoutes = {
     // 1. isTab: 是否通过tab展示内容, true: 是, false: 否
     // 2. iframeUrl: 是否通过iframe嵌套展示内容, '以http[s]://开头': 是, '': 否
     // 提示: 如需要通过iframe嵌套展示内容, 但不通过tab打开, 请自行创建组件使用iframe处理!
-    // { path: '/home', component: _import('common/home'), name: 'home', meta: { title: '首页' } },
+    //{ path: '/home', component: _import('common/home'), name: 'home', meta: { title: '首页' } },
     { path: '/theme', component: _import('common/theme'), name: 'theme', meta: { title: '主题' } },
     { path: '/', component: _import('common/theme'), name: 'theme', meta: { title: '主题' } },
     // { path: '/demo-echarts', component: _import('demo/echarts'), name: 'demo-echarts', meta: { title: 'demo-echarts', isTab: true } },

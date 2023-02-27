@@ -13,7 +13,8 @@
           :file-list="fileList"
           drag
           multiple
-          :on-change="onChenge"
+          :http-request="customUpload"
+          :on-change="onChange"
           list-type="picture"
         >
           <i class="el-icon-upload"></i>
@@ -75,12 +76,24 @@
       async getInfo (id) {
         let res = await this.$api.photo.getbyid(id)
         this.dataForm = res.data.pictures
-        console.log(this.dataForm)
+        //回显图片
+        this.fileList=[res.data.pictures.url];
+        console.log('表单数据',this.dataForm)
       },
-      async onChenge (file, fileList) {
+      async onChange (file, fileList) {
         this.fileList = fileList;
-        let res = await this.$api.aliyun.upLoadImage(file.url)
-        console.log(res)
+        //你要把res的url给存起来，而不是存fileList！
+        // console.log('onChang',file.url)
+      },
+      //自定义上传图片逻辑
+      async customUpload(e){
+        let data=await this.$api.aliyun.upLoadImage(e.file,(progress)=>{
+          console.log(progress);
+        })
+        //上传成功后赋值
+        this.dataForm.picUrl=JSON.parse(data).url
+        console.log(this.dataForm);
+        //this.$set(this.dataForm,'picUrl',url);
       },
       // 表单提交
       dataFormSubmit () {
@@ -95,6 +108,7 @@
             
           }
         })
+        console.log(valid)
       }
     }
   }
