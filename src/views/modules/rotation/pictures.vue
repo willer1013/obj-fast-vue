@@ -10,6 +10,7 @@
         <el-button v-if="isAuth('sys:role:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
+    
     <el-table
       :data="dataList"
       border

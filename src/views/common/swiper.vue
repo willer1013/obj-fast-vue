@@ -133,6 +133,7 @@ export default {
       // screenfull.toggle()
       if(screenfull.toggle()) {
         console.log('do it')
+        
       }
     },
     hello($event) {

@@ -21,6 +21,7 @@
           <div class="el-upload__text" v-html="$t('upload.text')"></div>
           <div class="el-upload__tip" slot="tip" >
             {{ $t("upload.tip", { format: "jpg、png、gif" }) }}
+            
           </div>
         </el-upload>
       </el-form-item>

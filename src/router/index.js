@@ -27,6 +27,7 @@ const globalRoutes = [
   { path: '/enter', component: _import('common/enter'), name: 'enter', meta: { title: 'enter' } },
 ]
 
+
 // 主入口路由(需嵌套上左右整体布局)
 const mainRoutes = {
   path: '/',
